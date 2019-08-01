@@ -20,14 +20,54 @@ const injectContext = PassedComponent => {
 					})
 			});
 		}
-
 		componentDidMount() {
-			/**
-			 * EDIT THIS!
-			 * This function is the equivalent to "window.onLoad", it only run once on the entire application lifetime
-			 * you should do your ajax requests or fetch api requests here
-			 **/
+			fetch("https://swapi.co/api/people/")
+				.then(response => response.json())
+				.then(data => {
+					let { store } = this.state;
+
+					console.log(data.results);
+					console.log("PEOPLE");
+
+					this.setState({ store: { ...store, people: data } });
+				});
+			fetch("https://swapi.co/api/vehicles/")
+				.then(response => response.json())
+				.then(data => {
+					let { store } = this.state;
+					console.log(data.results);
+					console.log("VEHICLES");
+
+					this.setState({ store: { ...store, vehicles: data } });
+				});
+			fetch("https://swapi.co/api/planets/")
+				.then(response => response.json())
+				.then(data => {
+					let { store } = this.state;
+					console.log(data);
+					console.log("PLANETS");
+
+					this.setState({ store: { ...store, planets: data } });
+				});
 		}
+
+		// componentDidMount() {
+		// 	fetch("https://swapi.co/api/people")
+		// 		.then(resp => {
+		// 			return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+		// 		})
+		// 		.then(data => {
+		// 			console.log(data);
+		// 			this.setState({ store: data });
+		// 			//this will print on the console the exact object received from the server
+		// 		});
+
+		// 	/**
+		// 	 * EDIT THIS!
+		// 	 * This function is the equivalent to "window.onLoad", it only run once on the entire application lifetime
+		// 	 * you should do your ajax requests or fetch api requests here
+		// 	 **/
+		// }
 
 		render() {
 			// the initial value for the context its not null anymore, but the current state of this component,

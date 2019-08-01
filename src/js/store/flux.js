@@ -12,7 +12,10 @@ const getState = ({ getStore, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			people: [],
+			planets: [],
+			vehicles: []
 		},
 		actions: {
 			changeColor: (index, color) => {
