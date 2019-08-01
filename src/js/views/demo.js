@@ -11,34 +11,42 @@ export class Demo extends React.Component {
 			<div className="container">
 				<ul className="list-group">
 					<Context.Consumer>
-						{({ store, actions }) => {
-							return store.demo.map((item, index) => {
-								return (
-									<li
-										key={index}
-										className="list-group-item d-flex justify-content-between"
-										style={{ background: item.background }}>
-										<Link to={"/single/" + index}>
-											<span>Link to: {item.title}</span>
-										</Link>
-										<p style={{ color: item.initial }}>
-											{"Check store/store.js scroll to the actions to see the code "}
-										</p>
-										<button
-											className="btn btn-success"
-											onClick={() => actions.changeColor(index, "orange")}>
-											Change Color
-										</button>
-									</li>
-								);
-							});
+						{({ store }) => {
+							return (
+								<div>
+									<h1>Characters</h1>
+									{store.people.map((item, index) => {
+										return (
+											<li key={index} className="list-group-item d-flex justify-content-between">
+												{item.name}
+											</li>
+										);
+									})}
+
+									<br />
+									<h1>Vehicles</h1>
+									{store.vehicles.map((item, index) => {
+										return (
+											<li key={index} className="list-group-item d-flex justify-content-between">
+												{item.name}
+											</li>
+										);
+									})}
+
+									<br />
+									<h1>Planets</h1>
+									{store.planets.map((item, index) => {
+										return (
+											<li key={index} className="list-group-item d-flex justify-content-between">
+												{item.name}
+											</li>
+										);
+									})}
+								</div>
+							);
 						}}
 					</Context.Consumer>
 				</ul>
-				<br />
-				<Link to="/">
-					<button className="btn btn-primary">Back home</button>
-				</Link>
 			</div>
 		);
 	}

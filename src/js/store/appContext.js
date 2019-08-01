@@ -29,7 +29,7 @@ const injectContext = PassedComponent => {
 					console.log(data.results);
 					console.log("PEOPLE");
 
-					this.setState({ store: { ...store, people: data } });
+					this.setState({ store: { ...store, people: data.results } });
 				});
 			fetch("https://swapi.co/api/vehicles/")
 				.then(response => response.json())
@@ -38,7 +38,7 @@ const injectContext = PassedComponent => {
 					console.log(data.results);
 					console.log("VEHICLES");
 
-					this.setState({ store: { ...store, vehicles: data } });
+					this.setState({ store: { ...store, vehicles: data.results } });
 				});
 			fetch("https://swapi.co/api/planets/")
 				.then(response => response.json())
@@ -47,7 +47,7 @@ const injectContext = PassedComponent => {
 					console.log(data);
 					console.log("PLANETS");
 
-					this.setState({ store: { ...store, planets: data } });
+					this.setState({ store: { ...store, planets: data.results } });
 				});
 		}
 
