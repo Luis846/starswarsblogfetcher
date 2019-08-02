@@ -51,23 +51,7 @@ const injectContext = PassedComponent => {
 				});
 		}
 
-		// componentDidMount() {
-		// 	fetch("https://swapi.co/api/people")
-		// 		.then(resp => {
-		// 			return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-		// 		})
-		// 		.then(data => {
-		// 			console.log(data);
-		// 			this.setState({ store: data });
-		// 			//this will print on the console the exact object received from the server
-		// 		});
 
-		// 	/**
-		// 	 * EDIT THIS!
-		// 	 * This function is the equivalent to "window.onLoad", it only run once on the entire application lifetime
-		// 	 * you should do your ajax requests or fetch api requests here
-		// 	 **/
-		// }
 
 		render() {
 			// the initial value for the context its not null anymore, but the current state of this component,
