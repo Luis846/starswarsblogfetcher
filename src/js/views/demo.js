@@ -11,7 +11,7 @@ export class Demo extends React.Component {
 			<div className="container">
 				<ul className="list-group">
 					<Context.Consumer>
-						{({ store }) => {
+						{({ store, actions }) => {
 							return (
 								<div>
 									<h1>
@@ -19,8 +19,12 @@ export class Demo extends React.Component {
 									</h1>
 									{store.people.map((item, index) => {
 										return (
-											<li key={index} className="list-group-item d-flex justify-content-between">
+											<li
+												key={index}
+												className="list-group-item d-flex justify-content-between"
+												onClick={() => actions.addPeople(item)}>
 												{item.name}
+												<button>Save to Favorite</button>
 											</li>
 										);
 									})}
@@ -33,6 +37,9 @@ export class Demo extends React.Component {
 										return (
 											<li key={index} className="list-group-item d-flex justify-content-between">
 												{item.name}
+												<button onClick={() => actions.addVehicles(item)}>
+													Save to Favorite
+												</button>
 											</li>
 										);
 									})}
@@ -45,6 +52,9 @@ export class Demo extends React.Component {
 										return (
 											<li key={index} className="list-group-item d-flex justify-content-between">
 												{item.name}
+												<button onClick={() => actions.addPlanets(item)}>
+													Save to Favorite
+												</button>
 											</li>
 										);
 									})}

@@ -15,22 +15,26 @@ const getState = ({ getStore, setStore }) => {
 			],
 			people: [],
 			planets: [],
-			vehicles: []
+			vehicles: [],
+			favorites: {
+				people: [],
+				vehicles: [],
+				planets: []
+			}
 		},
 		actions: {
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+			addPeople: obj => {
+				let { favorites } = getStore();
+				setStore({ favorites: { ...favorites, people: favorites.people.concat(obj) } });
+			},
+			addVehicles: obj => {
+				let { favorites } = getStore();
+				setStore({ favorites: { vehicles: favorites.vehicles.concat(obj) } });
+			},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			addPlanets: obj => {
+				let { favorites } = getStore();
+				setStore({ favorites: { planets: favorites.planets.concat(obj) } });
 			}
 		}
 	};

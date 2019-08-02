@@ -51,8 +51,6 @@ const injectContext = PassedComponent => {
 				});
 		}
 
-
-
 		render() {
 			// the initial value for the context its not null anymore, but the current state of this component,
 			// the context will have a getStore and setStore functions available then, because they were declared
