@@ -19,12 +19,14 @@ export class Demo extends React.Component {
 									</h1>
 									{store.people.map((item, index) => {
 										return (
-											<li
-												key={index}
-												className="list-group-item d-flex justify-content-between"
-												onClick={() => actions.addPeople(item)}>
+											<li key={index} className="list-group-item d-flex justify-content-between">
 												{item.name}
-												<button>Save to Favorite</button>
+												<button onClick={() => actions.addPeople(item)}>
+													<i
+														onClick={() => actions.addToFavoritePeople(item)}
+														className="fab fa-galactic-republic checks"
+													/>
+												</button>
 											</li>
 										);
 									})}
