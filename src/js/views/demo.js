@@ -17,19 +17,27 @@ export class Demo extends React.Component {
 									<h1>
 										<u>Characters</u>
 									</h1>
-									{store.people.map((item, index) => {
-										return (
-											<li key={index} className="list-group-item d-flex justify-content-between">
-												{item.name}
-												<button onClick={() => actions.addPeople(item)}>
-													<i
-														onClick={() => actions.addToFavoritePeople(item)}
-														className="fab fa-galactic-republic checks"
-													/>
-												</button>
-											</li>
-										);
-									})}
+									{store.favorites &&
+										store.people.map((item, index) => {
+											let func = () => actions.addToFavoritePeople(item);
+											let style = "fab fa-galactic-republic ";
+											let y = store.favorites.find(i => i.name === item.name);
+											if (y !== undefined) {
+												style = style + "checks2";
+												func = () => actions.removeToFavoritePeople(item);
+											}
+											return (
+												<li
+													key={index}
+													className="list-group-item d-flex justify-content-between">
+													{item.name}
+
+													<button onClick={func}>
+														<i className={style} />
+													</button>
+												</li>
+											);
+										})}
 
 									<br />
 									<h1>

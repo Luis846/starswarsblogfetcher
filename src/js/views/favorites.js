@@ -11,17 +11,10 @@ export class Favorite extends React.Component {
 					{({ store }) => {
 						return (
 							<div>
-								{store.favorites.people.map((item, i) => {
-									return <div key={i}>{item.name}</div>;
-								})}
-
-								{store.favorites.vehicles.map((item, i) => {
-									return <div key={i}>{item.name}</div>;
-								})}
-
-								{store.favorites.planets.map((item, i) => {
-									return <div key={i}>{item.name}</div>;
-								})}
+								{store.favorites &&
+									store.favorites.map((item, i) => {
+										return <div key={i}>{item.name}</div>;
+									})}
 							</div>
 						);
 					}}

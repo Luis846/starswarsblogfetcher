@@ -16,43 +16,52 @@ const getState = ({ getStore, setStore }) => {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: {
-				people: [],
-				vehicles: [],
-				planets: []
-			}
+			favorites: []
 		},
 		actions: {
-			addToFavoritePeople: item => {
-				item.target.classList.add("checks2");
+			removeToFavoritePeople: object => {
+				let { favorites } = getStore();
+				// let obj = favorites.find(items => {});
+				setStore({
+					favorites: favorites.filter(e => {
+						e !== object;
+					})
+				});
+
+				// if (obj === !undefined) {
+				// 	setStore({ favorites: favorites.concat(object) });
+				// 	delete items.name === object.name;
+				// }
+			},
+			addToFavoritePeople: object => {
+				// console.log(object.target);
+				// style = "checks2";
+				// console.log("d" + object);
+				let { favorites } = getStore();
+				let obj = favorites.find(items => {
+					return items.name === object.name;
+				});
+				if (obj === undefined) {
+					setStore({ favorites: favorites.concat(object) });
+				}
+
+				//  else {
+				//     if()
+				//     let obj = store.favorites.find(items => items.name === object.name);
+				// }
 			},
 			addPeople: obj => {
 				let { favorites } = getStore();
-				setStore({ favorites: { ...favorites, people: favorites.people.concat(obj) } });
-				let store = getStore();
-				let objs = store.favorites.find(items => items.name === object.name);
-				if (objs === undefined) {
-					setStore({ favorites: store.favorites.concat(object) });
-				}
+				setStore({ favorites: { ...favorites, people: favorites.push(obj) } });
 			},
 			addVehicles: obj => {
 				let { favorites } = getStore();
-				setStore({ favorites: { ...favorites, vehicles: favorites.vehicles.concat(obj) } });
-				let store = getStore();
-				let objs = store.favorites.find(items => items.name === object.name);
-				if (objs === undefined) {
-					setStore({ favorites: store.favorites.concat(object) });
-				}
+				setStore({ favorites: { ...favorites, vehicles: favorites.vehicles.push(obj) } });
 			},
 
 			addPlanets: obj => {
 				let { favorites } = getStore();
-				setStore({ favorites: { ...favorites, planets: favorites.planets.concat(obj) } });
-				let store = getStore();
-				let objs = store.favorites.find(items => items.name === object.name);
-				if (objs === undefined) {
-					setStore({ favorites: store.favorites.concat(object) });
-				}
+				setStore({ favorites: { ...favorites, planets: favorites.planets.push(obj) } });
 			}
 		}
 	};
