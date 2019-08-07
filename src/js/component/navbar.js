@@ -26,7 +26,7 @@ export class Navbar extends React.Component {
 
 						return (
 							<div>
-								{this.state.showFavorites && (
+								{this.state.showFavorites && ( //if this is true it renders the nav bar button
 									<Link to="/favorite">
 										<button className="btn btn-primary btn-lg" href="#" role="button">
 											Favorites

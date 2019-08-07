@@ -26,17 +26,12 @@ const injectContext = PassedComponent => {
 				.then(data => {
 					let { store } = this.state;
 
-					console.log(data.results);
-					console.log("PEOPLE");
-
 					this.setState({ store: { ...store, people: data.results } });
 				});
 			fetch("https://swapi.co/api/vehicles/")
 				.then(response => response.json())
 				.then(data => {
 					let { store } = this.state;
-					console.log(data.results);
-					console.log("VEHICLES");
 
 					this.setState({ store: { ...store, vehicles: data.results } });
 				});
@@ -44,8 +39,6 @@ const injectContext = PassedComponent => {
 				.then(response => response.json())
 				.then(data => {
 					let { store } = this.state;
-					console.log(data);
-					console.log("PLANETS");
 
 					this.setState({ store: { ...store, planets: data.results } });
 				});
